@@ -1,20 +1,41 @@
-const fetchBtn = document.querySelector(".btn")
+// const sayHello = function () {
+//   console.log("hello ")
+// }
 
-fetchBtn.addEventListener("click", function getJson() {
-  fetch("https://api.github.com/users")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
-      let output = ""
-      data.forEach((user) => {
-        output += `<li>${user.login}</li>`
-      })
+// const sayHello = () => {
+//   console.log("hello ")
+// }
 
-      document.getElementById("output").innerHTML = output
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-})
+// One line function does not need braces
+// const sayHello = () => console.log("hello world")
 
-// https://api.github.com/users
+// one line returns
+// const sayHello = () => "Hello world"
+
+// return an object
+// const sayHello = () => ({
+//   msg: "Hello world",
+// })
+
+// function params
+
+// const sayHello = (firstName, lastName) =>
+//   console.log(`Hello ${firstName} ${lastName}`)
+
+// sayHello("Ramez", "Taher")
+
+const users = ["name12", "name222", "name366"]
+
+// const getNameLenghts = users.map(function (name) {
+//   return name.length
+// })
+
+// shorter
+// const getNameLenghts = users.map((name) => {
+//   return name.length
+// })
+
+// The Shortest
+const getNameLenghts = users.map((name) => name.length)
+
+console.log(getNameLenghts)
