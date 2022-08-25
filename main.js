@@ -1,41 +1,22 @@
-// const sayHello = function () {
-//   console.log("hello ")
+// async function hello() {
+//   return "hello"
 // }
 
-// const sayHello = () => {
-//   console.log("hello ")
+// const hello = async () => {
+//   return "hello"
 // }
 
-// One line function does not need braces
-// const sayHello = () => console.log("hello world")
+// hello().then((res) => console.log(res))
 
-// one line returns
-// const sayHello = () => "Hello world"
+const getUsers = async () => {
+  // await response of the fetch call
+  const response = await fetch("https://jsonplaceholder.typicode.com/users")
 
-// return an object
-// const sayHello = () => ({
-//   msg: "Hello world",
-// })
+  // Only proceed once it resolved
+  const data = await response.json()
 
-// function params
+  // only proceed once second promise is resolved
+  return data
+}
 
-// const sayHello = (firstName, lastName) =>
-//   console.log(`Hello ${firstName} ${lastName}`)
-
-// sayHello("Ramez", "Taher")
-
-const users = ["name12", "name222", "name366"]
-
-// const getNameLenghts = users.map(function (name) {
-//   return name.length
-// })
-
-// shorter
-// const getNameLenghts = users.map((name) => {
-//   return name.length
-// })
-
-// The Shortest
-const getNameLenghts = users.map((name) => name.length)
-
-console.log(getNameLenghts)
+getUsers().then((users) => console.log(users))
