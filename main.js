@@ -1,35 +1,20 @@
-const posts = [
-  { title: "Post one", body: "this is post one" },
-  { title: "Post two", body: "this is post two" },
-]
+const fetchBtn = document.querySelector(".btn")
 
-const createPost = (post) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      posts.push(post)
+fetchBtn.addEventListener("click", function getJson() {
+  fetch("https://api.github.com/users")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      let output = ""
+      data.forEach((user) => {
+        output += `<li>${user.login}</li>`
+      })
 
-      const err = true
-      if (!err) {
-        resolve()
-      } else {
-        reject("Error : Something went wrong")
-      }
-    }, 2000)
-  })
-}
-
-const getPosts = () => {
-  setTimeout(() => {
-    let output = ""
-    posts.forEach((post) => {
-      output += `<li>${post.title}</li>`
+      document.getElementById("output").innerHTML = output
     })
-    document.body.innerHTML = output
-  }, 1000)
-}
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
-createPost({ title: "Post three", body: "this is post three" })
-  .then(getPosts)
-  .catch((err) => {
-    console.log(err)
-  })
+// https://api.github.com/users
